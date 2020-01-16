@@ -8,8 +8,9 @@ import {Subject} from 'rxjs';
 export class RecipeService {
 
   recipesChanged = new Subject<Recipe[]>();
+  private recipes: Recipe[] = [];
 
-  private recipes: Recipe[] = [
+  /*private recipes: Recipe[] = [
     new Recipe('Tandoori',
       'Pepper tandoori chicken ',
       'https://encrypted-tbn0.gstatic.' +
@@ -23,9 +24,14 @@ export class RecipeService {
       [new Ingredient('Meat', 1),
         new Ingredient('Cheese', 1)])
   ];
-
+*/
   getRecipes() {
     return this.recipes.slice();
+  }
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
   }
 
   getRecipe(index: number) {
@@ -46,7 +52,7 @@ export class RecipeService {
     this.recipesChanged.next(this.recipes.slice());
   }
 
-  deleteRecipe(index: number){
+  deleteRecipe(index: number) {
     this.recipes.splice(index, 1);
     this.recipesChanged.next(this.recipes.slice());
   }
