@@ -16,6 +16,7 @@ export class AuthenticateSuccess implements Action {
     userId: string,
     token: string,
     expirationDate: Date;
+    redirect: boolean;
   }) {
   }
 }
@@ -53,4 +54,4 @@ export class AutoLogin implements Action {
   readonly type = AUTO_LOGIN;
 }
 
-export type AuthActions = AuthenticateSuccess | Logout | LoginStart | AuthenticateFail | SignUpStart| ClearError | AutoLogin;
+export type AuthActions = AuthenticateSuccess | Logout | LoginStart | AuthenticateFail | SignUpStart | ClearError | AutoLogin;
